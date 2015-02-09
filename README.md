@@ -14,7 +14,6 @@ Parameterized comb model.
 ### Example
 ```html
 <craft>
-	<craft>
 	<craft name="comb" module="craft-comb-calebhsu"/>
 	<comb size="3"></comb>
 	<comb size="2" length="10" width="6"></comb>
