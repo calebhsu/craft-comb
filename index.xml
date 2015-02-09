@@ -1,0 +1,63 @@
+<craft> 
+	<parameter name="size" type="int" default="1"/>
+	<parameter name="width" type="int" default="5"/>
+	<parameter name="length" type="int" default="15"/>
+	<parameter name="height" type="int" default="1"/>
+	<script type="text/openjscad">
+
+		function main() {
+			var size = params.size;
+		    var width = params.width;
+		    var length = params.length;
+		    var height = params.height;
+
+		    if (width < 2)
+		        width = 2;
+
+		    if (length < 2)
+		        length = 2;
+
+		    if (width/length < 0.2)
+		        width = 0.2 * length;
+		    
+		    return difference(
+		        body(),
+		        teeth().translate([0, length / 12, 0])
+		    ).scale(size);
+
+		    // comb components
+		    function body() {
+		    	var combMain, combDome;
+
+		        // parts
+		        combMain = cube({size: [width - 0.5, length, height]});
+		        combDome = cylinder({
+		            r: length / 2, 
+		            h: height
+		        });
+		        
+		        // transformations
+		        combMain = translate([0.1, 0, 0], combMain);
+		        combDome = translate([0.2, length / 2, 0], combDome);
+		        combDome = scale([0.3, 1, 1], combDome); 
+		        
+		        return union(combMain, combDome);
+		    }
+
+		    function teeth() {
+		    	var t;
+
+		        // parts
+		        t = cube({size: [width, 0.2, height]});
+		        
+		        // transformation
+		        for (var i = 0; i <= length*2; i++) {
+		            t = union(t, t.translate([0, 0.4, 0]));
+		        }
+		        
+		        return t;
+		    }
+		}
+
+	</script>
+</craft>
