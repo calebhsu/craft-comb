@@ -2,7 +2,7 @@
     <parameter name="width" type="int" default="5"/>
     <parameter name="length" type="int" default="15"/>
     <parameter name="height" type="int" default="1"/>
-    <script type="text/openjscad">
+    <script>
 
         function main() {
             if (params.width < 2)
@@ -17,7 +17,7 @@
             return difference(
                 body(),
                 teeth().translate([0, params.length / 12, 0])
-            );
+            ).scale(2);
 
             // comb components
             function body() {
