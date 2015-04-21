@@ -3,9 +3,9 @@
     <parameter name="length" type="int" default="30"/>
     <parameter name="height" type="int" default="2"/>
 
-    <!-- Dome -->
     <script>
         function main() {
+            // Dome
             var spine;
 
             if (params.width < 2)
@@ -29,16 +29,15 @@
         }
     </script>
      
-    <!-- Guards -->
     <column spacing="{{length - 5}}">
         <repeat n="2">
             <cube xsize="{{width - 1}}" ysize="2.5" zsize="{{height}}"></cube>
         </repeat>
     </column>
     
-    <!-- Teeth -->
     <script>
         function main() {
+            // Teeth
             var teeth = []
             var dist = 2.75, n = params.length
             var div = (params.length - 5) / params.length
