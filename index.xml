@@ -2,50 +2,55 @@
     <parameter name="width" type="int" default="10"/>
     <parameter name="length" type="int" default="30"/>
     <parameter name="height" type="int" default="2"/>
-
-    <script>
-        function main() {
-            // Dome
-            var spine;
-
-            if (params.width < 2)
-                params.width = 2;
-
-            if (params.length < 15)
-                params.length = 15;
-
-            if (params.width/params.length < 0.2)
-                params.width = 0.2 * params.length;
-            
-            spine = cylinder({
-                r: params.length / 2, 
-                h: params.height
-            }).translate([0, params.length / 2, 0]).scale([0.3, 1, 1]);
-            
-            return difference(
-                spine,
-                cube({size: [params.width, params.length, params.height]})
-            );
-        }
-    </script>
-     
-    <column spacing="{{length - 5}}">
-        <repeat n="2">
-            <cube xsize="{{width - 1}}" ysize="2.5" zsize="{{height}}"></cube>
-        </repeat>
-    </column>
     
-    <script>
-        function main() {
-            // Teeth
-            var teeth = []
-            var dist = 2.75, n = params.length
-            var div = (params.length - 5) / params.length
-            for (var i = 0; i < n; i++) {
-                teeth.push('<cube xsize="{{width - 1}}" ysize="0.4" zsize="{{height}}" y="' + dist + '"></cube>')
-                dist = dist + div
+    <row color="peru">
+        <script>
+            function main() {
+                // Dome
+                var spine;
+    
+                if (params.width < 2)
+                    params.width = 2;
+    
+                if (params.length < 15)
+                    params.length = 15;
+    
+                if (params.width/params.length < 0.2)
+                    params.width = 0.2 * params.length;
+                
+                spine = cylinder({
+                    r: params.length / 2, 
+                    h: params.height
+                }).translate([0, params.length / 2, 0]).scale([0.3, 1, 1]);
+                
+                return difference(
+                    spine,
+                    cube({size: [params.width, params.length, params.height]})
+                );
             }
-            return teeth.join('\n')
-        }
-    </script>
+        </script>
+        
+        <group>
+            <column spacing="{{length - 5}}">
+                <repeat n="2">
+                    <cube xsize="{{width - 1}}" ysize="2.5" zsize="{{height}}"></cube>
+                </repeat>
+            </column>
+            
+            <script>
+                function main() {
+                    // Teeth
+                    var teeth = []
+                    var dist = 2.75, n = params.length
+                    var div = (params.length - 5) / params.length
+                    for (var i = 0; i < n; i++) {
+                        teeth.push('<cube xsize="{{width - 1}}" ysize="0.4" zsize="{{height}}" y="' + dist + '"></cube>')
+                        dist = dist + div
+                    }
+                    return teeth.join('\n')
+                }
+            </script>
+        </group>
+    </row>
+    
 </craft>
