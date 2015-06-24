@@ -3,7 +3,7 @@
 Parameterized comb model.
 
 ### Install
-	$ npm install craft-comb-calebhsu
+    $ npm install craft-comb-calebhsu
 
 ### Parameters
 - width: adjusts width of comb
@@ -13,16 +13,12 @@ Parameterized comb model.
 ### Example
 ```html
 <craft>
-	<craft name="comb" module="calebhsu/craft-comb"/>
-	<lineup spacing="2">
-		<scale factor="3">
-			<comb></comb>
-		</scale>
-		<scale factor="2">
-			<comb length="10" width="6"></comb>
-		</scale>
-		<comb></comb>
-	</lineup>
+    <craft name="comb" module="craft-comb"/>
+    <row spacing="2">
+        <comb transform="scale(3,3,3)"></comb>
+        <comb length="10" width="6" transform="scale(2,2,2)"></comb>
+        <comb></comb>
+    </row>
 </craft>
 ```
 
