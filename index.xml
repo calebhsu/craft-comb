@@ -13,7 +13,7 @@
                     params.width = 2;
     
                 if (params.length < 15)
-                    params.length a= 15;
+                    params.length = 15;
     
                 if (params.width/params.length < 0.2)
                     params.width = 0.2 * params.length;
@@ -30,26 +30,18 @@
             }
         </script>
         
-        <g>
+        <g l="centerXY()">
             <col spacing="{{length - 5}}">
                 <repeat n="2">
                     <cube size="{{width - 1}} 2.5 {{height}}"></cube>
                 </repeat>
             </col>
             
-            <script>
-                function main() {
-                    // Teeth
-                    var teeth = []
-                    var dist = 2.75, n = params.length
-                    var div = (params.length - 5) / params.length
-                    for (var i = 0; i < n; i++) {
-                        teeth.push('<cube size="{{width - 1}} 0.4 {{height}}" y="' + dist + '"></cube>')
-                        dist = dist + div
-                    }
-                    return teeth.join('\n')
-                }
-            </script>
+            <col spacing="0.5">
+                <repeat n="{{length - 2}}">
+                    <cube size="{{width - 1}} 0.4 {{height}}"></cube>
+                </repeat>
+            </col>
         </g>
     </row>
     
