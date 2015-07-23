@@ -1,10 +1,14 @@
 <craft name="comb"> 
+    <style>
+        * { color: peru; }
+    </style>
+    
     <parameter name="width" type="int" default="10"/>
     <parameter name="length" type="int" default="30"/>
     <parameter name="height" type="int" default="2"/>
     
-    <row color="peru">
-        <script>
+    <row>
+        <script type="text/openjscad">
             function main() {
                 // Dome
                 var spine;

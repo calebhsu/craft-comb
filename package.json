@@ -1,6 +1,6 @@
 {
   "name": "craft-comb-calebhsu",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Parameterized Comb Model",
   "main": "index.js",
   "scripts": {
